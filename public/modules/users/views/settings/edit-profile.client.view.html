@@ -1,0 +1,76 @@
+<section class="row" data-ng-controller="SettingsController">
+	<h3 class="col-md-12 text-center">Edit your profile</h3>
+	
+	<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
+		<div class="col-xs-offset-2 col-xs-8 col-md-4">
+		
+			<fieldset>
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name">
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name">
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
+				</div>
+				
+				<div class="form-group">
+					<label for="private">Make your content only available to those with accounts?</label>
+					<input type="checkbox" name="private"> Make private </input>
+				
+			</fieldset>
+		
+		</div>
+		<div class="col-xs-offset-2 col-xs-8 col-md-4">
+			
+			<fieldset>
+				<div class="form-group">
+					<label for="pic">Pic a Profile Image!</label>
+					<br />
+					<label>
+						<input type="radio" name="fb" name="profPic" id="a" />
+						<img src="https://placekitten.com/g/75/75">
+					  </label>
+					  
+					  <label>
+						<input type="radio" name="fb" name="profPic" id="b" />
+						<img src="https://placekitten.com/g/75/75">
+					  </label>
+					  
+					  <br />
+					  
+					  <label>
+						<input type="radio" name="fb"name="profPic" id="c" />
+						<img src="https://placekitten.com/g/75/75">
+					  </label>
+					  
+					  <label>
+						<input type="radio" name="fb" name="profPic" id="d" />
+						<img src="https://placekitten.com/g/75/75">
+					  </label>
+						
+				</div>
+			</fieldset>
+		
+		</div>
+		<div class="col-xs-offset-2 col=-xs-8 col-md-offset-3 col-md-6">
+			<div class="text-center form-group">
+					<button type="submit" class="btn btn-large btn-primary">Save Profile</button>
+				</div>
+				<div data-ng-show="success" class="text-center text-success">
+					<strong>Profile Saved Successfully</strong>
+				</div>
+				<div data-ng-show="error" class="text-center text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</div>
+	</form>
+</section>

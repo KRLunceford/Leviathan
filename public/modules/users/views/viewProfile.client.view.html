@@ -1,0 +1,9 @@
+<section data-ng-controller="ProfileController" data-ng-init="viewProfile()">
+	<h3 class="col-md-12 text-center" data-ng-bind="username"></h3>
+	<p>Name: <span data-ng-bind="firstName"></span> <span data-ng-bind="lastname"></span></p>
+	<p>Email: <span data-ng-bind="email"></span></p>
+	<button ng-hide="authentication.user._id">Add Friend!</button>
+	<div>
+		<div data-ng-bind="posts"></div>
+	</div>
+</section>

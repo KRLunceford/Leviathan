@@ -1,0 +1,48 @@
+<section data-ng-controller="HomeController">
+	<div class="col-xs-12 col-md-9">
+	<div class="jumbotron text-center">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+				<img alt="MEAN.JS" class="img-responsive text-center" src="http://24.media.tumblr.com/ba61d7f41f588b7dd62918b164374692/tumblr_mj0eitDmUt1qlw2yjo1_500.jpg" />
+				<h1> THE LEVIATHAN </h1>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<p class="lead">
+				Beautiful almalgamation of Tumblr and Facebook!
+			</p>
+		</div>
+	</div>
+	<div data-ng-bind="Posts">
+	</div>
+	</div>
+	<div class="col-xs-6 col-md-3" id="sidebar">
+		
+		<div id="popular" data-ng-controller="SidebarController">
+			<div>
+				<div>
+					<h4 class="left">Popular Images</h4>
+					<span class="right">
+						<a href="/#!/photos">View All</a>
+						<span>|</span>
+						<a ng-show="authentication.user._id" href="/#!/photos/create">Add New</a>
+					</span>
+				</div>
+				<p class="clearF" data-ng-bind="popular"></p>
+			</div>
+			<div>
+				<div>
+					<h4 class="left">Popular Blog Posts</h4>
+					<span class="right">
+						<a href="/#!articles">View All</a>
+						<span>|</span>
+						<a ng-show="authentication.user._id" href="/#!/articles/create">Add New</a>
+					</span>
+				</div>
+				<p class="clearF" data-ng-bind="blogs"></p>
+			</div>
+		</div>
+	</div>
+	
+</section>

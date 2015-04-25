@@ -1,0 +1,18 @@
+#sidebar {
+	margin-top: 25px;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.clearF {
+	clear: both;
+}
+#postComment {
+	margin-top: 25px;
+}
+label, textarea {
+	margin-bottom: 10px;
+}

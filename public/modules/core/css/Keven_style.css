@@ -1,0 +1,76 @@
+/*Test Code- Added by Keven*/
+
+/* Hi Chelsea- Please see comment-outs and notes below:
+	-I couldn't (And really didn't want to mess with the overall code as this is different than what I am
+	comfortable with structure-wise) really edit the code in a live view as I could not get it to run from my comp
+	as I get the following error:   Figured it would be best if you added it and I can change it after. :D But this code should make it sexy;
+
+										(module.js:340
+    									throw err;
+          										^
+								Error: Cannot find module 'glob'
+							    at Function.Module._resolveFilename (module.js:338:15)
+							    at Function.Module._load (module.js:280:25)
+							    at Module.require (module.js:364:17)
+							    at require (module.js:380:17)
+							    at Object.<anonymous> (/Users/kevenledee/Desktop/MEANFlick/config/init.js:6:12)
+							    at Module._compile (module.js:456:26)
+							    at Object.Module._extensions..js (module.js:474:10)
+							    at Module.load (module.js:356:32)
+							    at Function.Module._load (module.js:312:12)
+							    at Module.require (module.js:364:17)
+								Kevens-MacBook-Pro:MEANFlick kevenledee$;)
+
+*/
+
+/*Instructions: 
+
+  -Include and reference font-awesome CSS file for the Ubuntu text
+  -Include and reference the animate.css file for and adjust it as needed for overall animation leave
+  that file as is as it needs to reference it's source. 
+  -you can duplicate the webkit-transition FULL set as referenced below in the anchor (a) tag
+  	-copy all of it from background to the the last transition line and paste throught for a unified feel
+  -Copy the properties for the (a:focus...)section; and reference it in all the input fields. 
+  -If you change a colour; use the Find>Replace All funtion so that the colour is carried throught
+*/
+
+/*For the font to work- include the font-awesome CSS file and reference it in the HTML*/
+
+html, body {height: 100%;color: #121212;}
+body, {font-family: "Ubuntu", sans-serif;font-weight: 300;color: #121212;display:none;  }
+a {
+	background: transparent;
+	outline: none; 
+	text-decoration: none;
+/*Chelsea- This is code for browser support transitions- responsive*/		
+	-webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  
+  /* It should work but if you want to learn more on how it works you can go here- http://www.w3schools.com/css/css3_transitions.asp*/
+}
+a:active,
+a:hover,
+a:focus {
+	outline: 0; 
+	background: transparent;
+	color: #121212;
+	text-decoration: none;	  
+}
+
+a:focus, a:active, 
+.color{color:#ff6f40;}
+.text-center{text-align:center;}
+.white {color: #fff;}
+.position-rel{position:relative;}
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+select::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: 0;
+    outline : 0;
+}
