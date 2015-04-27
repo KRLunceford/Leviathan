@@ -31,7 +31,11 @@
 						<a ng-show="authentication.user._id" href="/#!/photos/create">Add New</a>
 					</span>
 				</div>
-				<p class="clearF" data-ng-bind="popular"></p>
+				<div class="clearF">
+					<a data-ng-repeat="photo in popular | limitTo:3 | orderBy: '-views'" data-ng-href="#!/photos/{{photo._id}}">
+						<img src="{{photo.image}}" style="max-width: 200px" />
+					</a>
+				</div>
 			</div>
 			<div>
 				<div>
@@ -42,7 +46,11 @@
 						<a ng-show="authentication.user._id" href="/#!/articles/create">Add New</a>
 					</span>
 				</div>
-				<p class="clearF" data-ng-bind="blogs"></p>
+				<div class="clearF">
+					<a data-ng-repeat="article in blogs | limitTo:3 | orderBy: '-views'" data-ng-href="#!/articles/{{article._id}}">
+						<p data-ng-bind="article.title"></p>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

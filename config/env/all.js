@@ -52,6 +52,7 @@ module.exports = {
 				'public/modules/core/css/animate.css',
 			],
 			js: [
+				'http://localhost:3000/socket.io/socket.io.js',
 				'public/lib/bootstrap/js/dropdown.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js',

@@ -12,6 +12,29 @@ var _ = require('lodash'),
 /**
  * Update user details
  */
+ exports.friend = function(req, res) {
+	var user = req.user;
+	var containsValue = true;
+	
+	for (var i=0; i<req.user.friends.length; i++) {
+		if (req.user.friend[i].equals(req.user_id)) {
+			containsValue = true;
+		}
+	}
+	if (!containsValue) {
+		req.user.friend.push(req.user_id);
+	}
+	req.user.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+		message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(req.user);
+	 }
+  });
+}
+
 exports.update = function(req, res) {
 	// Init Variables
 	var user = req.user;

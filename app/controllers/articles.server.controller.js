@@ -30,7 +30,17 @@ exports.create = function(req, res) {
  * Show the current article
  */
 exports.read = function(req, res) {
-	res.json(req.article);
+	var article = req.article;
+	article.views += 1;
+	article.save(function(err) {
+		if (err) {
+		  console.log('Problem'+err);
+		  return res.status(400).send({
+		message: errorHandler.getErrorMessage(err)
+		  });
+		} else 
+		  res.jsonp(article);
+	  });
 };
 
 /**

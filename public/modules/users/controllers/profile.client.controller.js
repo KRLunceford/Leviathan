@@ -1,15 +1,25 @@
 'use strict';
 
-angular.module('users').controller('ProfileController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-	function($scope, $http, $location, Users, Authentication) {
+angular.module('users').controller('ProfileController', ['$scope', '$stateParams', '$http', '$location', 'Users', 'Authentication',
+	function($scope, $stateParams, $http, $location, Users, Authentication) {
 		$scope.user = Authentication.user;
+		
+		$scope.isFriend = false;
 
 		$scope.viewProfile = function() {
-			$scope.username = "Username";
-			$scope.firstName = "FirstName";
-			$scope.lastname = "Lastname";
-			$scope.email = "Email";
-			$scope.posts = "Also displaying posts/uploads";
+			$scope.user2 = Users.get({
+				userId: $stateParams.userId
+			});
+			
+		};
+		
+		$scope.friendThis = function() {
+			var user = $scope.user;
+			$http.put('users/friend/' + user._id).success(function() {
+				user.friends.push($scope.authentication.user._id);
+				$scope.isFriend = true;
+				console.log(user.friends);
+			});
 		};
 	}
 ]);

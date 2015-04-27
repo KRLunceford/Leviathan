@@ -48,6 +48,10 @@ var UserSchema = new Schema({
 		validate: [validateLocalStrategyProperty, 'Please fill in your email'],
 		match: [/.+\@.+\..+/, 'Please fill a valid email address']
 	},
+	friends: [{
+	  type: Schema.ObjectId,
+          ref: 'User'
+	}],
 	profPic: {
 		type: String,
 		default: 'http://placekitten.com/g/50/50',
