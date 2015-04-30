@@ -8,7 +8,8 @@ var _ = require('lodash'),
 	mongoose = require('mongoose'),
 	passport = require('passport'),
 	User = mongoose.model('User');
-
+//console.log("jakldjf;a");
+	
 /**
  * Update user details
  */
@@ -33,10 +34,24 @@ var _ = require('lodash'),
       res.jsonp(req.user);
 	 }
   });
-}
+};
+
+exports.viewProf = function(req, res) {
+	
+	console.log(req.params.displayName);
+	//console.log(req.user);
+	var displayName = req.params.displayName;
+	//console.log(displayName);
+	User.findOne( {'username': displayName}, 'username profPic friends', function(err, User2) {
+		console.log(User2);
+		res.jsonp(User2);
+	});
+	//res.jsonp(displayName);
+};
 
 exports.update = function(req, res) {
 	// Init Variables
+	//console.log("yo");
 	var user = req.user;
 	var message = null;
 

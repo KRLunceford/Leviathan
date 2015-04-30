@@ -40,6 +40,7 @@ exports.read = function(req, res) {
 
   var photo = req.photo;
   console.log(photo);
+  console.log("yooooo");
   //  photo = _.extend(photo , req.body);
   photo.views += 1;
   photo.save(function(err) {

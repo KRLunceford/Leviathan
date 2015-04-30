@@ -1,0 +1,68 @@
+#sidebar {
+	margin-top: 25px;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.clearF {
+	clear: both;
+}
+#postComment {
+	margin-top: 25px;
+}
+label, textarea {
+	margin-bottom: 10px;
+}
+/*a {
+	color: green;
+}*/
+body {
+	background-color: rgb(40,190,140);
+	font-family: "Ubuntu", sans-serif;
+	font-weight: 300;
+	color: #121212;
+}
+.navbar-brand {
+	background-color: rgb(225,225,255);
+	height: 75px;
+	border-radius: 10px;
+}
+.jumbotron {
+	background-color: rgb(225,225,255);
+	border-radius: 50px;
+}
+.userHover: hover {
+	background-color: rgb(225,225,255);
+	border-radius: 10px;
+}
+.userHover {
+	color: #121212;
+}
+a {
+	color: white;
+	background: transparent;
+	outline: none; 
+	text-decoration: none;
+/*Chelsea- This is code for browser support transitions- responsive*/		
+	-webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  
+  /* It should work but if you want to learn more on how it works you can go here- http://www.w3schools.com/css/css3_transitions.asp*/
+}
+a:active,
+a:hover,
+a:focus {
+	outline: 0; 
+	background: transparent;
+	color: #121212;
+	text-decoration: none;	  
+}
+.headerClass a {
+	color: #121212;
+}

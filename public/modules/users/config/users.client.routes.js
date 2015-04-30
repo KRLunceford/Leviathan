@@ -7,9 +7,9 @@ angular.module('users').config(['$stateProvider',
 		$stateProvider.
 		state('view', {
 			url: '/users/viewProfile',
-			templateUrl: 'modules/users/views/viewProfile.client.view.html'
+			templateUrl: 'modules/users/views/viewUser.client.view.html'
 		}).
-		state('view2', {
+		state('viewProf', {
 			url: '/users/:displayName',
 			templateUrl: 'modules/users/views/viewUser.client.view.html'
 		}).

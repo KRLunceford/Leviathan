@@ -54,7 +54,7 @@ var UserSchema = new Schema({
 	}],
 	profPic: {
 		type: String,
-		default: 'http://placekitten.com/g/50/50',
+		default: '/modules/users/img/icons/starfish.png',
 	},
 	priv: {
 		type: Boolean,

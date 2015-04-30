@@ -7,9 +7,16 @@ angular.module('users').controller('ProfileController', ['$scope', '$stateParams
 		$scope.isFriend = false;
 
 		$scope.viewProfile = function() {
+			console.log("hi");
+			console.log($stateParams.displayName);
+			//console.log(Users);
 			$scope.user2 = Users.get({
-				userId: $stateParams.userId
+				displayName: $stateParams.displayName
+			}, function() {
+				console.log($scope.user2.profPic);
+				console.log($scope.user2);
 			});
+			//console.log($scope.user2);
 			
 		};
 		
