@@ -24,6 +24,7 @@
 					</a>
 	</div>
 	<div data-ng-show="authentication.user">
+		<!-- facing same problem as on user profile page: could not get this filter to agree to show just the posts by friends of the logged in user instead of all -->
 		<h4>Latest Images</h4>
 		<a data-ng-repeat="photo in allPhotos | limitTo:5 | orderBy: '-created'" data-ng-href="#!/photos/{{photo._id}}">
 						<img src="{{photo.image}}" style="max-width: 200px" />

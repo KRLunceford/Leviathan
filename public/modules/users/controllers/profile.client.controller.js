@@ -42,6 +42,7 @@ angular.module('users').controller('ProfileController', ['$scope', '$stateParams
 				console.log(user.friends);
 			});
 		};
+		//attempting custom filter
 		$scope.filterThis = function(id) {
 			console.log(id);
 			return function(user) {

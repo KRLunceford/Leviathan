@@ -11,9 +11,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.allBlogs = Articles.query();
 		
 		console.log($scope.allPhotos);
-		//$scope.Posts = $scope.allPhotos.concat($scope.allBlogs);
-		//console.log($scope.Posts);
 		
+		//was attempting custom filter
 		$scope.filterByThis = function(arrayName) {
 			var array = arrayName;
 			console.log(array);
