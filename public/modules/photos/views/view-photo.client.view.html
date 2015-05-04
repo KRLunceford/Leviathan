@@ -34,20 +34,23 @@
 		<div class="page-body">
 			<image ng-src="{{photo.image}}"/>
 		</div>
-		<div id="postComment" class="form-group">
+		<div data-ng-hide="authentication.user">
+			Log in to post a comment!
+		</div>
+		<div id="postComment" class="form-group" data-ng-show="authentication.user">
 		
-			<form method="post" action="#!/photos">
-				<label for="comment" class="comments">Comment:</label>
-				<textarea name="comment" rows="2" class="form-control"></textarea>
+			<form data-ng-submit="commentThis()">
+				<label for="commentText" class="comments">Comment:</label>
+				<textarea name="commentText" rows="2" class="form-control" id="commentText" data-ng-model="commentText"></textarea>
 			<button class="btn btn-success" id="cmt-btn">Post Comment</button>
 			</form>
 		</div>
 		
-		<div id="comments">
-		<div>
-			<p><span data-ng-bind="comments">Comment Here!</span><br />
-			Posted by: Username here
-			</p>
+		<div id="PhotoComments">
+		<div data-ng-repeat="comment in comments | filter: { what : [photo._id]}">
+			<span data-ng-bind="comment.commentText"></span><br />
+			Posted By: <a ng-href="/#!/users/{{comment.user.displayName}}"><span data-ng-bind="comment.user.displayName"></span></a>
+			
 		</div>
 	</div>
 </section>

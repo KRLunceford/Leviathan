@@ -18,6 +18,7 @@ exports.signup = function(req, res) {
 
 	// Init Variables
 	var user = new User(req.body);
+	user.friends.push(user._id);
 	var message = null;
 
 	// Add missing user fields

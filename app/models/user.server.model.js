@@ -5,7 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
-	friends = require('mongoose-friends'),
+	//friends = require('mongoose-friends'),
 	crypto = require('crypto');
 
 /**

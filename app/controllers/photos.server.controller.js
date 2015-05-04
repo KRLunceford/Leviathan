@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Photo = mongoose.model('Photo'),
+	Comment = mongoose.model('Comment'),
 	_ = require('lodash');
 
 /**
@@ -17,7 +18,8 @@ exports.create = function(req, res) {
   //console.log('User info: ' +req.user.username);
   var photo = new Photo(req.body);
   photo.user = req.user;
-  photo.user.displayName = req.user.username;
+  photo.priv = req.user.priv;
+  //photo.user.displayName = req.user.username;
   //photo.user.username = req.user.username;
   photo.likes.push(req.user._id);
   console.log(photo.user);
@@ -115,6 +117,7 @@ exports.list = function(req, res) {
 exports.like = function(req, res) {
   var user = req.user;
   var containsValue = false;
+  console.log(req.photo.likes);
 
   // Determine if user is already in 
   for(var i=0; i<req.photo.likes.length; i++) {
@@ -136,6 +139,9 @@ exports.like = function(req, res) {
 	 }
   });
 };
+
+
+
 
 /**
  * Photo middleware

@@ -13,9 +13,19 @@
 			</p>
 		</div>
 	</div>
-	<div>
+	<div data-ng-hide="authentication.user">
 		<h4>Latest Images</h4>
-		<a data-ng-repeat="photo in allPhotos | limitTo:3 | orderBy: '-created'" data-ng-href="#!/photos/{{photo._id}}">
+		<a data-ng-repeat="photo in allPhotos | filter: {priv: false } | limitTo:5 | orderBy: '-created'" data-ng-href="#!/photos/{{photo._id}}">
+						<img src="{{photo.image}}" style="max-width: 200px" />
+					</a>
+		<h4>Latest Blog Posts</h4>
+		<a data-ng-repeat="article in allBlogs | limitTo:3 | orderBy: '-created'" data-ng-href="#!/articles/{{article._id}}">
+						<p data-ng-bind="article.title"></p>
+					</a>
+	</div>
+	<div data-ng-show="authentication.user">
+		<h4>Latest Images</h4>
+		<a data-ng-repeat="photo in allPhotos | limitTo:5 | orderBy: '-created'" data-ng-href="#!/photos/{{photo._id}}">
 						<img src="{{photo.image}}" style="max-width: 200px" />
 					</a>
 		<h4>Latest Blog Posts</h4>
@@ -24,40 +34,6 @@
 					</a>
 	</div>
 	</div>
-	<div class="col-xs-6 col-md-3" id="sidebar">
-		
-		<div id="popular" data-ng-controller="SidebarController">
-			<div>
-				<div>
-					<h4 class="left">Popular Images</h4>
-					<span class="right">
-						<a href="/#!/photos">View All</a>
-						<span>|</span>
-						<a ng-show="authentication.user._id" href="/#!/photos/create">Add New</a>
-					</span>
-				</div>
-				<div class="clearF">
-					<a data-ng-repeat="photo in popular | limitTo:3 | orderBy: '-views'" data-ng-href="#!/photos/{{photo._id}}">
-						<img src="{{photo.image}}" style="max-width: 200px" />
-					</a>
-				</div>
-			</div>
-			<div>
-				<div>
-					<h4 class="left">Popular Blog Posts</h4>
-					<span class="right">
-						<a href="/#!articles">View All</a>
-						<span>|</span>
-						<a ng-show="authentication.user._id" href="/#!/articles/create">Add New</a>
-					</span>
-				</div>
-				<div class="clearF">
-					<a data-ng-repeat="article in blogs | limitTo:3 | orderBy: '-views'" data-ng-href="#!/articles/{{article._id}}">
-						<p data-ng-bind="article.title"></p>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="col-xs-6 col-md-3" id="sidebar" ng-include src='"modules/core/views/sidebar.client.view.html"'>	</div>
 	
 </section>

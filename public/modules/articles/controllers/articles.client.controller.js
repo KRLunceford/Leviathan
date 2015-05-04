@@ -1,10 +1,10 @@
 'use strict';
 
 // Articles controller
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-	function($scope, $stateParams, $location, Authentication, Articles) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles', 'Comments', 'Users',
+	function($scope, $stateParams, $location, Authentication, Articles, Comments, Users) {
 		$scope.authentication = Authentication;
-		$scope.comments = "Comments!";
+		//$scope.comments = "Comments!";
 
 		// Create new Article
 		$scope.create = function() {
@@ -25,6 +25,24 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 				$scope.error = errorResponse.data.message;
 			});
 		};
+		
+		$scope.commentThis  = function() {
+			//console.log($scope.article);
+		var comment = new Comments ({
+				commentText: this.commentText,
+				what: $scope.article._id
+			});
+
+			// Redirect after save
+			comment.$save(function(response) {
+				$location.path('articles/'+ $scope.article._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+	};
 
 		// Remove existing Article
 		$scope.remove = function(article) {
@@ -63,6 +81,9 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 		$scope.findOne = function() {
 			$scope.article = Articles.get({
 				articleId: $stateParams.articleId
+			}, function(){
+				$scope.comments = Comments.query();
+		console.log($scope.comments);
 			});
 		};
 	}

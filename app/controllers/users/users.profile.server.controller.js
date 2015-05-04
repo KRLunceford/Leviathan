@@ -7,6 +7,7 @@ var _ = require('lodash'),
 	errorHandler = require('../errors.server.controller.js'),
 	mongoose = require('mongoose'),
 	passport = require('passport'),
+	Comment = mongoose.model('Comment'),
 	User = mongoose.model('User');
 //console.log("jakldjf;a");
 	
@@ -16,25 +17,48 @@ var _ = require('lodash'),
  exports.friend = function(req, res) {
 	var user = req.user;
 	console.log('user' + req.user);
-	console.log(req);
-	var containsValue = true;
-	
-	for (var i=0; i<req.user.friends.length; i++) {
-		if (req.user.friend[i].equals(req.user_id)) {
-			containsValue = true;
+	console.log(req.params.user2Id);
+	User.findOne({ '_id' : req.params.user2Id }, '_id friends', function(err, user2) {
+		console.log(user2);
+		//console.log(user.friends.length);
+		var containsValue = false;
+		for (var i=0; i<user.friends.length; i++) {
+			if (user.friends[i].equals(req.params.user2Id)) {
+				//console.log("kaldfjw;oiefjiojij");
+				containsValue = true;
+			}
+			//console.log("lksjdf;alfjdk");
 		}
-	}
-	if (!containsValue) {
-		req.user.friend.push(req.user_id);
-	}
-	req.user.save(function(err) {
-    if (err) {
-      return res.status(400).send({
-		message: errorHandler.getErrorMessage(err)
-      });
-    } else {
+		if (!containsValue) {
+			//console.log("jkdjfa;wjefoiaj");
+			user.friends.push(req.params.user2Id);
+		}
+		for (var k=0; k<user2.friends.length; k++) {
+			if (user2.friends[k].equals(user._id)) {
+				containsValue = true;
+			}
+		}
+		if (!containsValue) {
+			user2.friends.push(user._id);
+		}
+		console.log(user.friends);
+		console.log(user2.friends);
+		
+		user.save(function(err) {
+			if (err) {
+			  return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			  });
+			};
+		});
+		user2.save(function(err) {
+			if (err) {
+			  return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			  });
+			}
+		});
       res.jsonp(req.user);
-	 }
   });
 };
 

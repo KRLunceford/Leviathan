@@ -3,6 +3,7 @@
 module.exports = function(app) {
   var users = require('../../app/controllers/users.server.controller');
   var photos = require('../../app/controllers/photos.server.controller');
+  var comments = require('../../app/controllers/comments.server.controller');
   var multer = require('multer');
   
   app.use(multer({ dest:'./public/uploads'}));

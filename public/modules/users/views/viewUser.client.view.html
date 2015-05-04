@@ -5,6 +5,8 @@
 	<img src="{{user2.profPic}}" class="right" /><br />
 	<div class="clearF"></div><button ng-show="!isFriend" ng-click="friendThis()">Add Friend!</button>
 	<div>
-		<div data-ng-bind="posts"></div>
+		<a data-ng-repeat="photo in allPhotos | filter: filterThis(user._id) | limitTo:5 | orderBy: '-created'" data-ng-href="#!/photos/{{photo._id}}">
+						<img src="{{photo.image}}" style="max-width: 200px" />
+					</a>
 	</div>
 </section>

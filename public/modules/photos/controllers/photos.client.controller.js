@@ -1,10 +1,10 @@
 'use strict';
 
 //note addition of $http
-angular.module('photos').controller('PhotosController', ['$scope', '$stateParams', '$http', '$location', 'Authentication', 'Photos',  'Users',
-	function($scope, $stateParams, $http, $location, Authentication, Photos, Users) {
+angular.module('photos').controller('PhotosController', ['$scope', '$stateParams', '$http', '$location', 'Authentication', 'Photos',  'Users', 'Comments',
+	function($scope, $stateParams, $http, $location, Authentication, Photos, Users, Comments) {
 	  $scope.authentication = Authentication;
-	  $scope.comments = "Comments!";
+	  //$scope.comments = "Comments!";
 	  
 	  //console.log('hi');
 
@@ -28,6 +28,23 @@ angular.module('photos').controller('PhotosController', ['$scope', '$stateParams
 	       });
             
 	  };
+	  
+	  $scope.commentThis  = function() {
+		var comment = new Comments ({
+				commentText: this.commentText,
+				what: $scope.photo._id
+			});
+
+			// Redirect after save
+			comment.$save(function(response) {
+				$location.path('photos/'+ $scope.photo._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+	};
 
 	  // Remove existing Photo
 	  $scope.remove = function(photo) {
@@ -83,8 +100,11 @@ angular.module('photos').controller('PhotosController', ['$scope', '$stateParams
                 $scope.isLiked = containsValue;
 				//console.log($scope.photo.user.displayName);
 				
-				
+				$scope.comments = Comments.query();
+		console.log($scope.comments);
+								
               });
+		
 
 	  };
           

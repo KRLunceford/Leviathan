@@ -50,6 +50,7 @@ module.exports = {
 				//'public/lib/bootstrap/dist/css/Keven_style.css',
 				'public/lib/bootstrap/dist/css/font-awesome.min.css',
 				'public/lib/bootstrap/dist/css/animate.css',
+				//'public/lib/bootstrap/dist/css/layout.css',
 			],
 			js: [
 				'public/lib/angular/angular.js',
