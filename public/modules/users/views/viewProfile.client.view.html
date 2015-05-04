@@ -1,7 +1,7 @@
 <section data-ng-controller="ProfileController" data-ng-init="viewProfile()">
 	<h3 class="col-md-12 text-center" data-ng-bind="username"></h3>
 	<div style="width:30%">
-	<p class="left">Name: <span data-ng-bind="user2.username"></span> <span data-ng-bind="user2.lastName"></span></p>
+	<p class="left">Name: <span data-ng-bind="user2.displayName"></span> <span data-ng-bind="user2.lastName"></span></p>
 	<img src="{{user2.profPic}}" class="right" /><br />
 	<div class="clearF"></div><button ng-show="!isFriend" ng-click="friendThis()">Add Friend!</button>
 	<div>

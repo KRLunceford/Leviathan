@@ -15,6 +15,8 @@ var _ = require('lodash'),
  */
  exports.friend = function(req, res) {
 	var user = req.user;
+	console.log('user' + req.user);
+	console.log(req);
 	var containsValue = true;
 	
 	for (var i=0; i<req.user.friends.length; i++) {
@@ -42,7 +44,7 @@ exports.viewProf = function(req, res) {
 	//console.log(req.user);
 	var displayName = req.params.displayName;
 	//console.log(displayName);
-	User.findOne( {'username': displayName}, 'username profPic friends', function(err, User2) {
+	User.findOne( {'displayName': displayName}, 'username displayName profPic friends', function(err, User2) {
 		console.log(User2);
 		res.jsonp(User2);
 	});
@@ -53,6 +55,7 @@ exports.update = function(req, res) {
 	// Init Variables
 	//console.log("yo");
 	var user = req.user;
+	console.log(req.body);
 	var message = null;
 
 	// For security measurement we remove the roles from the req.body object
@@ -63,6 +66,7 @@ exports.update = function(req, res) {
 		user = _.extend(user, req.body);
 		user.updated = Date.now();
 		user.displayName = user.firstName + ' ' + user.lastName;
+		//console.log(req.body);
 
 		user.save(function(err) {
 			if (err) {

@@ -32,6 +32,10 @@ var ArticleSchema = new Schema({
 	views: {
 		type: Number,
 		default: 0
+	},
+	priv: {
+		type: Boolean,
+		default: false,
 	}
 });
 

@@ -24,7 +24,7 @@
 				
 				<div class="form-group">
 					<label for="private">Make your content only available to those with accounts?</label>
-					<input type="checkbox" name="private"> Make private </input>
+					<input type="checkbox" id="private" name="private" data-ng-model="user.priv"> Make private </input>
 				
 			</fieldset>
 		
@@ -33,27 +33,27 @@
 			
 			<fieldset>
 				<div class="form-group">
-					<label for="pic">Pic a Profile Image!</label>
+					<label for="profPic">Pic a Profile Image!</label>
 					<br />
 					<label>
-						<input type="radio" name="fb" name="profPic" id="a" data-ng-model="user.profPic" />
+						<input type="radio" id="profPic" name="profPic" data-ng-model="user.profPic" value="/modules/users/img/icons/goldfish.png" />
 						<img src="/modules/users/img/icons/goldfish.png" />
 					  </label>
 					  
 					  <label>
-						<input type="radio" name="fb" name="profPic" id="b" data-ng-model="user.profPic" />
+						<input type="radio" id="profPic" name="profPic" data-ng-model="user.profPic" value="/modules/users/img/icons/starfish.png"/>
 						<img src="/modules/users/img/icons/starfish.png" />
 					  </label>
 					  
 					  <br />
 					  
 					  <label>
-						<input type="radio" name="fb"name="profPic" id="c" data-ng-model="user.profPic" />
+						<input type="radio" id="profPic"name="profPic" data-ng-model="user.profPic" value="/modules/users/img/icons/snail.png" />
 						<img src="/modules/users/img/icons/snail.png">
 					  </label>
 					  
 					  <label>
-						<input type="radio" name="fb" name="profPic" id="d" data-ng-model="user.profPic" />
+						<input type="radio" id="profPic" name="profPic" data-ng-model="user.profPic" value="/modules/users/img/icons/octopus.png"/>
 						<img src="/modules/users/img/icons/octopus.png">
 					  </label>
 						

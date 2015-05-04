@@ -32,6 +32,10 @@ var PhotoSchema = new Schema({
 		type: Number,
 		default: 0
 	},
+	priv: {
+		type: Boolean,
+		default: false,
+	},
 	likes: [{
 	  type: Schema.ObjectId,
           ref: 'User'

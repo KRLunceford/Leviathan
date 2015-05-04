@@ -12,14 +12,18 @@ var mongoose = require('mongoose'),
  * Create a Photo
  */
 exports.create = function(req, res) {
-  console.log(req.body);
-  console.log(req.files);
+  //console.log(req.body);
+  //console.log(req.files);
+  //console.log('User info: ' +req.user.username);
   var photo = new Photo(req.body);
   photo.user = req.user;
+  photo.user.displayName = req.user.username;
+  //photo.user.username = req.user.username;
   photo.likes.push(req.user._id);
+  console.log(photo.user);
   if(req.files.image) {
     photo.image =req.files.image.path.substring(7);
-    console.log(photo.image);
+    //console.log(photo.image);
   }  else
     photo.image='default.jpg';
   photo.save(function(err) {

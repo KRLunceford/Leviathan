@@ -14,6 +14,9 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
 	var article = new Article(req.body);
 	article.user = req.user;
+	
+	article.priv = user.priv;
+	console.log(article.priv);
 
 	article.save(function(err) {
 		if (err) {
@@ -21,6 +24,7 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			var socketio = req.app.get('socketio');
 			res.json(article);
 		}
 	});

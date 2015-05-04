@@ -1,8 +1,8 @@
 'use strict';
 
 //note addition of $http
-angular.module('photos').controller('PhotosController', ['$scope', '$stateParams', '$http', '$location', 'Authentication', 'Photos',  
-	function($scope, $stateParams, $http, $location, Authentication, Photos) {
+angular.module('photos').controller('PhotosController', ['$scope', '$stateParams', '$http', '$location', 'Authentication', 'Photos',  'Users',
+	function($scope, $stateParams, $http, $location, Authentication, Photos, Users) {
 	  $scope.authentication = Authentication;
 	  $scope.comments = "Comments!";
 	  
@@ -81,6 +81,9 @@ angular.module('photos').controller('PhotosController', ['$scope', '$stateParams
                   }
                 }
                 $scope.isLiked = containsValue;
+				//console.log($scope.photo.user.displayName);
+				
+				
               });
 
 	  };
